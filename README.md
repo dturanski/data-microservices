@@ -264,6 +264,7 @@ In `FileTlrTransformerApplicationTests` add the property to `@SpringBootTest`
 
 ```java
 @SpringBootTest("taskName=foo")
+@EnableConfigurationProperties(FileTlrProperties.class)
 ```
 In general this annotation accepts an array of String to configure properties for testing:
 ```java
