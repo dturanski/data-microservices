@@ -76,75 +76,7 @@ $java -jar http-source-rabbit-1.2.1.BUILD-SNAPSHOT.jar --spring.cloud.stream.bin
 curl -H"Content-Type:text/plain" -X POST http://localhost:8082 -d 'Hello World'
 ````
 
-## Exercise 3 - Download and Start Dataflow Server and Shell
-
-#### Download
-
-```
-$ wget http://repo.spring.io/milestone/org/springframework/cloud/spring-cloud-dataflow-server-local/1.2.0.RC1/spring-cloud-dataflow-server-local-1.2.0.RC1.jar
-$ wget http://repo.spring.io/milestone/org/springframework/cloud/spring-cloud-dataflow-shell/1.2.0.RC1/spring-cloud-dataflow-shell-1.2.0.RC1.jar
-```
-#### Start Dataflow Server
-
-````
-$ java -jar spring-cloud-dataflow-server-local-1.2.0.RC1.jar
-````
-#### Start Dataflow Shell
-
-````
-$ java -jar spring-cloud-dataflow-shell-1.2.0.RC1.jar
-````
-
-#### Use the Shell to Register OOTB Apps
-```
-dataflow:>app import http://bit.ly/Bacon-RELEASE-stream-applications-rabbit-maven
-```
-
-## Exercise 4 - Create a Stream: time | log
-
-* Point your web browser to http://localhost:9393/dashboard
-* Select the `Streams` tab
-* Select the `time` source App from the Apps listed at the left of the page and drag it to the main panel.
-* Select the `log` sink App and drag it to the main panel.
-* Connect the source and sink by clicking on the `time` connection point and dragging to the `log` connection point.
-* Note the stream's DSL definition in the text box.
-* Click on the `Create Stream` button (the one with the blue-green border)
-* Enter `ticktock` as the screen name and select `Deploy streams`
-* Click on the `Definitions` tab and wait for the status to be `deployed`
-* Go to the Dataflow Server console and copy the directory path of the log file for `ticktock.log instance 0`. The log will be in *[directory]/stdout_0.log*
-* Tail the log file using `tail -f` or view in a text editor to see the time messages.
-* Go to the shell and issue the following commands:
-```
-dataflow:>stream list
-dataflow:>stream undeploy ticktock
-dataflow:>stream list (to see it has been undeployed)
-```
-
-## Exercise 5 - Fun with Named Channels
-
-#### Using the shell, create and deploy 3 streams:
-
-Set a simple directory in the file sink, like `decisions` under your home directory
-
-
-```
-dataflow:>stream create decision --definition "http --port=9000 | router --expression=#jsonPath(payload,'$.foo')=='foo'?'foo':'other'" --deploy
-dataflow:>stream create foo-stream --definition ":foo > file --directory=[some-directory] --name=foo.txt" --deploy
-dataflow:>stream create other-stream --definition ":bar > file --directory=[some-directory] --name=other.txt" --deploy
-```
-
-#### Post some messages to the http source:
-
-```
-$curl -X POST -H "Content-Type:application/json" http://localhost:9000 -d '{"foo":"foo"}'
-$curl -X POST -H "Content-Type:application/json" http://localhost:9000 -d '{"foo":"bar"}'
-$curl -X POST -H "Content-Type:application/json" http://localhost:9000 -d '{"foo":"other"}'
-$curl -X POST -H "Content-Type:application/json" http://localhost:9000 -d '{"foo":"foo"}'
-$curl -X POST -H "Content-Type:application/json" http://localhost:9000 -d '{"foo":"something else"}'
-```
-#### Examine the contents of `foo.txt` and `other.txt`
-
-## Exercise 6 - Write A Simple Task App
+## Exercise 3 - Write A Simple Task App
 
 #### Go to SpringInitializr at http://start.spring.io or if using STS or Intellij, create a new Spring Initializr Project
 
@@ -232,6 +164,76 @@ public class HelloWorldTaskApplication implements CommandLineRunner{
 ```
 
 * Query TASK_EXECUTION again
+
+
+## Exercise 4 - Download and Start Dataflow Server and Shell
+
+#### Download
+
+```
+$ wget http://repo.spring.io/milestone/org/springframework/cloud/spring-cloud-dataflow-server-local/1.2.0.RC1/spring-cloud-dataflow-server-local-1.2.0.RC1.jar
+$ wget http://repo.spring.io/milestone/org/springframework/cloud/spring-cloud-dataflow-shell/1.2.0.RC1/spring-cloud-dataflow-shell-1.2.0.RC1.jar
+```
+#### Start Dataflow Server
+
+````
+$ java -jar spring-cloud-dataflow-server-local-1.2.0.RC1.jar
+````
+#### Start Dataflow Shell
+
+````
+$ java -jar spring-cloud-dataflow-shell-1.2.0.RC1.jar
+````
+
+#### Use the Shell to Register OOTB Apps
+```
+dataflow:>app import http://bit.ly/Bacon-RELEASE-stream-applications-rabbit-maven
+```
+
+## Exercise 4 - Create a Stream: time | log
+
+* Point your web browser to http://localhost:9393/dashboard
+* Select the `Streams` tab
+* Select the `time` source App from the Apps listed at the left of the page and drag it to the main panel.
+* Select the `log` sink App and drag it to the main panel.
+* Connect the source and sink by clicking on the `time` connection point and dragging to the `log` connection point.
+* Note the stream's DSL definition in the text box.
+* Click on the `Create Stream` button (the one with the blue-green border)
+* Enter `ticktock` as the screen name and select `Deploy streams`
+* Click on the `Definitions` tab and wait for the status to be `deployed`
+* Go to the Dataflow Server console and copy the directory path of the log file for `ticktock.log instance 0`. The log will be in *[directory]/stdout_0.log*
+* Tail the log file using `tail -f` or view in a text editor to see the time messages.
+* Go to the shell and issue the following commands:
+```
+dataflow:>stream list
+dataflow:>stream undeploy ticktock
+dataflow:>stream list (to see it has been undeployed)
+```
+
+## Exercise 5 - Fun with Named Channels
+
+#### Using the shell, create and deploy 3 streams:
+
+Set a simple directory in the file sink, like `decisions` under your home directory
+
+
+```
+dataflow:>stream create decision --definition "http --port=9000 | router --expression=#jsonPath(payload,'$.foo')=='foo'?'foo':'other'" --deploy
+dataflow:>stream create foo-stream --definition ":foo > file --directory=[some-directory] --name=foo.txt" --deploy
+dataflow:>stream create other-stream --definition ":bar > file --directory=[some-directory] --name=other.txt" --deploy
+```
+
+#### Post some messages to the http source:
+
+```
+$curl -X POST -H "Content-Type:application/json" http://localhost:9000 -d '{"foo":"foo"}'
+$curl -X POST -H "Content-Type:application/json" http://localhost:9000 -d '{"foo":"bar"}'
+$curl -X POST -H "Content-Type:application/json" http://localhost:9000 -d '{"foo":"other"}'
+$curl -X POST -H "Content-Type:application/json" http://localhost:9000 -d '{"foo":"foo"}'
+$curl -X POST -H "Content-Type:application/json" http://localhost:9000 -d '{"foo":"something else"}'
+```
+#### Examine the contents of `foo.txt` and `other.txt`
+
 
 ## Exercise 7 - Launch A Task From A Stream
 
