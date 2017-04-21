@@ -220,7 +220,7 @@ Set a simple directory in the file sink, like `decisions` under your home direct
 ```
 dataflow:>stream create decision --definition "http --port=9000 | router --expression=#jsonPath(payload,'$.foo')=='foo'?'foo':'other'" --deploy
 dataflow:>stream create foo-stream --definition ":foo > file --directory=[some-directory] --name=foo.txt" --deploy
-dataflow:>stream create other-stream --definition ":bar > file --directory=[some-directory] --name=other.txt" --deploy
+dataflow:>stream create other-stream --definition ":other > file --directory=[some-directory] --name=other.txt" --deploy
 ```
 
 #### Post some messages to the http source:
