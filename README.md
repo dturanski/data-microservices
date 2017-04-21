@@ -39,7 +39,7 @@ $ wget https://repo.spring.io/libs-snapshot/org/springframework/cloud/stream/app
 
 ```
 or paste the URL in your browser
-or use `download-app.sh log-sink-rabbit 1.2.1.BUILD-SNAPSHOT` provided in this repo.
+or use the script provided in this repo: `download-app.sh log-sink-rabbit 1.2.1.BUILD-SNAPSHOT` 
 
 #### Run each app in a separate terminal:
 
