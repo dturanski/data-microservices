@@ -39,7 +39,7 @@ $ wget https://repo.spring.io/libs-snapshot/org/springframework/cloud/stream/app
 
 ```
 or paste the URL in your browser
-or use the script provided in this repo: `download-app.sh log-sink-rabbit 1.2.1.BUILD-SNAPSHOT` 
+or use the script provided in this repo: `download-app.sh log-sink-rabbit 1.2.1.BUILD-SNAPSHOT`
 
 #### Run each app in a separate terminal:
 
@@ -100,7 +100,7 @@ $ java -jar spring-cloud-dataflow-shell-1.2.0.RC1.jar
 dataflow:>app import http://bit.ly/Bacon-RELEASE-stream-applications-rabbit-maven
 ```
 
-## Exercise 4 - Create a Stream: time | file
+## Exercise 4 - Create a Stream: time | log
 
 * Point your web browser to http://localhost:9393/dashboard
 * Select the `Streams` tab
