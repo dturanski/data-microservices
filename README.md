@@ -181,8 +181,8 @@ public class HelloWorldTaskApplication implements CommandLineRunner{
 
 ```xml
 <dependency>
-			<groupId>org.mariadb.jdbc</groupId>
-			<artifactId>mariadb-java-client</artifactId>
+	<groupId>org.mariadb.jdbc</groupId>
+	<artifactId>mariadb-java-client</artifactId>
 </dependency>
 ```
 
@@ -190,9 +190,9 @@ public class HelloWorldTaskApplication implements CommandLineRunner{
 
 ```xml
 <dependency>
-		<groupId>org.hsqldb</groupId>
-		<artifactId>hsqldb</artifactId>
-		<scope>test</scope>
+	<groupId>org.hsqldb</groupId>
+	<artifactId>hsqldb</artifactId>
+	<scope>test</scope>
 </dependency>
 ```
 * Add the following properties to `application.properties`:
