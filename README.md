@@ -343,8 +343,7 @@ public class FileTaskLaunchRequestTransformer {
 }
 ```
 
-## Exercise 8 - Use these components to create a Data Flow that will launch the `file-task` task, whenever a file
-appears in a directory.
+## Exercise 8 - Use these components to create a data flow to launch the `file-task` task, whenever a file appears in a directory.
 
 #### For convenience we will register the prebuilt binaries in Data Flow:
 
