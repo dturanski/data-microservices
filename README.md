@@ -190,7 +190,7 @@ $ java -jar spring-cloud-dataflow-shell-1.2.0.RC1.jar
 dataflow:>app import http://bit.ly/Bacon-RELEASE-stream-applications-rabbit-maven
 ```
 
-## Exercise 4 - Create a Stream: time | log
+## Exercise 5 - Create a Stream: time | log
 
 * Point your web browser to http://localhost:9393/dashboard
 * Select the `Streams` tab
@@ -210,7 +210,7 @@ dataflow:>stream undeploy ticktock
 dataflow:>stream list (to see it has been undeployed)
 ```
 
-## Exercise 5 - Fun with Named Channels
+## Exercise 6 - Fun with Named Channels
 
 #### Using the shell, create and deploy 3 streams:
 
@@ -233,7 +233,6 @@ $curl -X POST -H "Content-Type:application/json" http://localhost:9000 -d '{"foo
 $curl -X POST -H "Content-Type:application/json" http://localhost:9000 -d '{"foo":"something else"}'
 ```
 #### Examine the contents of `foo.txt` and `other.txt`
-
 
 ## Exercise 7 - Launch A Task From A Stream
 
