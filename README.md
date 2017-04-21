@@ -353,7 +353,6 @@ dataflow:>app register file-tlr-transformer --type processor -uri  https://githu
 
 dataflow:>app register simple-task-launcher --type sink --uri https://github.com/dturanski/spring-cloud-stream-binaries/blob/master/binaries/simple-task-launcher-sink-1.0.0.BUILD-SNAPSHOT.jar?raw=true
 
-dataflow:>
 dataflow:>app register file-task --type task --uri  https://github.com/dturanski/spring-cloud-task-binaries/blob/master/binaries/file-task-0.0.1-SNAPSHOT.jar?raw=true
 ````
 
