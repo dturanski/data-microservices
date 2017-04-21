@@ -177,7 +177,11 @@ $ wget http://repo.spring.io/milestone/org/springframework/cloud/spring-cloud-da
 #### Start Dataflow Server
 
 ````
-$ java -jar spring-cloud-dataflow-server-local-1.2.0.RC1.jar
+$java -jar spring-cloud-dataflow-server-local-1.2.0.RC1.jar \
+    --spring.datasource.url=jdbc:mysql:spring_cloud_dataflow \
+    --spring.datasource.username=root \
+    --spring.datasource.password=<password> \
+    --spring.datasource.driver-class-name=org.mariadb.jdbc.Driver
 ````
 #### Start Dataflow Shell
 
