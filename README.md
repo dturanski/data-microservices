@@ -234,7 +234,7 @@ $curl -X POST -H "Content-Type:application/json" http://localhost:9000 -d '{"foo
 ```
 #### Examine the contents of `foo.txt` and `other.txt`
 
-## Exercise 7 - Launch A Task From A Stream
+## Exercise 7 - Build Microservices needed to launch a Task From a Stream
 
 #### Pull Starting Code From Github
 
