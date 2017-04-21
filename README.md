@@ -351,7 +351,7 @@ public class FileTaskLaunchRequestTransformer {
 
 
 ````
-dataflow:>app register file-tlr-transformer --type processor -uri  https://github.com/dturanski/spring-cloud-stream-binaries/blob/master/binaries/file-tlr-transformer-1.0.0.BUILD-SNAPSHOT.jar?raw=true
+dataflow:>app register file-tlr-transformer --type processor --uri  https://github.com/dturanski/spring-cloud-stream-binaries/blob/master/binaries/file-tlr-transformer-1.0.0.BUILD-SNAPSHOT.jar?raw=true
 
 dataflow:>app register simple-task-launcher --type sink --uri https://github.com/dturanski/spring-cloud-stream-binaries/blob/master/binaries/simple-task-launcher-sink-1.0.0.BUILD-SNAPSHOT.jar?raw=true
 
