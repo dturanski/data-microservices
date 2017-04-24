@@ -362,6 +362,8 @@ dataflow:>app register simple-task-launcher --type sink --uri https://github.com
 dataflow:>app register file-task --type task --uri  https://github.com/dturanski/spring-cloud-task-binaries/blob/master/binaries/file-task-0.0.1-SNAPSHOT.jar?raw=true
 ````
 
+NOTE: If running the local server, you can register the jars built with Maven: `file://<path-to-jar>`.
+
 #### Create the task to be launched
 ```
 dataflow:>task create file-task --definition "file-task"
