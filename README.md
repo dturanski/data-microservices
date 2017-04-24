@@ -396,3 +396,5 @@ GOOGL BUY 10
 You should see the Dataflow Server console log launch the task and will output the path of its log file directory
 open stdout_0.log in that directory and you should see the contents of the file listed (each line processed by the
 task).
+
+NOTE: By default, the file source will prevent processing duplicate files. To launch the task multiple times, use different file names or set `prevent-duplicates` to `false` on the file source.
